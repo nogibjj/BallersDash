@@ -5,7 +5,8 @@ Main cli or app entry point
 from mylib.calculator import add
 import click
 
-#var=1;var=2
+# var=1;var=2
+
 
 @click.command("add")
 @click.argument("a", type=int)
