@@ -8,7 +8,7 @@ from PIL import Image
 from scraper import Scraper
 
 
-@st.cache_data
+# @st.cache_data
 def load_data(seaso_n, season__type, toda_y, start, end):
     basketball_ref_games_ = get_all_games_current_season(str(start), str(end))
     teams__ = teams.get_teams()
