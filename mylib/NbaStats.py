@@ -1,4 +1,3 @@
-"""Logic for getting NBA stats"""
 import numpy as np
 from nba_api.stats.static import teams  # players
 from nba_api.stats.endpoints import teamgamelog  # shotchartdetail
@@ -6,6 +5,7 @@ from scipy.stats import norm, skew, kurtosis
 import pandas as pd
 from requests.exceptions import ReadTimeout
 from time import sleep
+from Support.Emailer import Emailer
 from BasketballReferenceLinks import BasketBallReferenceLinks
 from datetime import datetime, timedelta
 import calendar
@@ -62,15 +62,11 @@ def get_all_games_current_season(season_start_date, season_end_date):
 
 
 def get_team_game_log(team_id, season, season_type):
-    # log = teamgamelog.TeamGameLog(season=season,
-    #                               season_type_all_star=season_type,
-    #                               team_id=team_id)
-
     season_type.reverse()
     df = pd.concat(
         [
             teamgamelog.TeamGameLog(
-                season=season, season_type_all_star=[s_], team_id=team_id, timeout=60
+                season=season, season_type_all_star=[s_], team_id=team_id
             ).get_data_frames()[0]
             for s_ in season_type
         ]
@@ -253,8 +249,6 @@ def team_ranker(
 def get_stats(
     team_1, team_2, team_log_dict_, to_merge_df, alternate_source, team_names
 ):
-    # team_1_log = get_team_game_log(team_1_id, season_, season_type_)
-    # team_2_log = get_team_game_log(team_2_id, season_, season_type_)
     team_1_log = team_log_dict_[team_1]
     team_2_log = team_log_dict_[team_2]
     team_1_log = team_1_log.merge(
@@ -313,20 +307,6 @@ def get_stats(
         vs_df_2 = vs_df_2.sort_values(by="GAME_DATE", ascending=False)
 
         vs_df = pd.concat([vs_df_2[vs_df.columns.values], vs_df], axis=0)
-
-        # if team_1 == 'PHI':
-        #     vs_df.loc[len(vs_df.index)] = ['Game 1', 'TOR at PHI', 'W', 131, 'L', 111, 20]
-        #     vs_df.loc[len(vs_df.index)] = ['Game 2', 'TOR at PHI', 'W', 112, 'L', 97, 15]
-        #     vs_df.loc[len(vs_df.index)] = ['Game 3', 'PHI at TOR', 'W', 104, 'L', 101, 3]
-        #
-        # elif team_1 == 'PHX':
-        #     vs_df.loc[len(vs_df.index)] = ['Game 1', 'NOP at PHX', 'W', 110, 'L', 99, 11]
-        #     vs_df.loc[len(vs_df.index)] = ['Game 2', 'NOP at PHX', 'L', 114, 'W', 125, 11]
-        #
-        # elif team_1 == 'ATL':
-        #     vs_df.loc[len(vs_df.index)] = ['Game 1', 'ATL at MIA', 'L', 91, 'W', 115, 24]
-        #     vs_df.loc[len(vs_df.index)] = ['Game 2', 'ATL at MIA', 'L', 105, 'W', 115, 20]
-
         vs_pts_stats = get_pts_stats(vs_df, mode=2)
 
         dm = vs_pts_stats["mean_diff"]
@@ -357,6 +337,11 @@ def get_stats(
         total_points_vs = [np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan]
         vs_pts_stats = pd.DataFrame()
 
+    print(team_1_log["PTS"].dtype)
+    print(team_1_log["PTS"].dtype)
+
+    team_1_log["PTS"] = pd.to_numeric(team_1_log["PTS"], errors="coerce")
+    team_2_log["PTS"] = pd.to_numeric(team_2_log["PTS"], errors="coerce")
     team_1_pts_stats = get_pts_stats(team_1_log)
     team_2_pts_stats = get_pts_stats(team_2_log)
     team_1_pts_stats_last_5 = get_pts_stats(team_1_log, last_n_games=5)
@@ -426,7 +411,6 @@ def get_stats(
     }
 
     stats = pd.DataFrame(d_, index=index)
-
     return (
         stats,
         vs_df,
@@ -457,4 +441,307 @@ def get_games_on_date(
 
 
 if __name__ == "__main__":
+    basketball_ref_games = get_all_games_current_season("2022-10-01", "2023-3-30")
+    seaso_n_ = "2022-23"
+    season__type_ = ["Regular Season", "Playoffs"]
+
+    mailer_agent = Emailer()
+
+    teams_ = teams.get_teams()
+    teams__df = pd.DataFrame.from_dict(teams_)
+    team_abbreviation = teams__df[["full_name", "abbreviation"]]
+
+    easter__teams_, western__teams_, team__log_dict_ = team_ranker(
+        teams__df, seaso_n_, season__type_, {}
+    )
+
+    to_merge__df = pd.concat([easter__teams_, western__teams_])
+    to_merge__df = (to_merge__df / 98) * 100
+    to_merge__df = to_merge__df.reset_index()
+    games = get_games_on_date(
+        games_df=basketball_ref_games,
+        date=datetime(year=2023, month=3, day=25),
+        abbreviation_df=team_abbreviation,
+    )
+    resy = []
+    for game in games:
+        team__1 = game[0]
+        team__2 = game[1]
+        team_1__id = get_team_id(teams__df, team__1)
+        team_2__id = get_team_id(teams__df, team__2)
+
+        (
+            sts,
+            vdf,
+            vps,
+            t1,
+            t2,
+            t1ps,
+            t1p15,
+            t1p10,
+            t1p5,
+            t2ps,
+            t2p15,
+            t2p10,
+            t2p5,
+        ) = get_stats(
+            team__1,
+            team__2,
+            team__log_dict_,
+            to_merge__df,
+            basketball_ref_games,
+            teams__df,
+        )
+
+        # Create a DataFrame with the data
+        data = {
+            "Last head to head dates": vdf.GAME_DATE.values,
+            f"Last {team__1} head to head w/L": vdf.WL_1.values,
+            "Last head to head point differences": vdf.PTS_DIFF.values,
+            "Last head to head point differences skew": skew(
+                vdf.PTS_DIFF.values, axis=0, bias=True
+            ),
+            "Lst head to head point differences kurtosis": kurtosis(
+                vdf.PTS_DIFF.values, axis=0, bias=True
+            ),
+            "last_head_to_head_stats": vps,
+        }
+
+        emailer = ""
+        emailer += f"<p>Last head to head dates: {vdf.GAME_DATE.values} \n</p>"
+        emailer += f"<p>Last {team__1} head to head w/L: {vdf.WL_1.values}\n</p>"
+        emailer += (
+            f"<p>Last head to head point differences: {vdf.PTS_DIFF.values} \n</p>"
+        )
+        emailer += f"<p>Last head to head point differences skew: {skew(vdf.PTS_DIFF.values, axis=0, bias=True)} \n</p>"
+        s = f"<p>Lst head to head point differences kurtosis: {kurtosis(vdf.PTS_DIFF.values, axis=0, bias=True)} \n</p>"
+        emailer += s
+        emailer += f"<p>Last head to head point differences: {vps} \n</p>"
+        emailer += f"<p>*******************************************************************************************</p>"
+
+        a = t1ps["mean"]
+        b = t1ps["std"]
+        c = t1ps["skew"]
+        d = t1ps["kurtosis"]
+        s = f"<p>{team__1} Season pts scaled mean: {a:.2f}  sdev: {b:.2f}  skew {c:.2f}  kurtosis {d:.2f}\n</p>"
+        emailer += s
+        data[f"{team__1} Season pts scaled mean"] = {
+            "mean": a,
+            "stdev": b,
+            "skew": c,
+            "kurtosis": d,
+        }
+
+        a = t1p15["mean"]
+        b = t1p15["std"]
+        c = t1p15["skew"]
+        d = t1p15["kurtosis"]
+        s = f"<p>{team__1} Last 15 pts scaled mean: {a:.2f}  sdev: {b:.2f}  skew {c:.2f}  kurtosis {d:.2f}\n</p>"
+        emailer += s
+        data[f"{team__1} Last 15 pts scaled mean"] = {
+            "mean": a,
+            "stdev": b,
+            "skew": c,
+            "kurtosis": d,
+        }
+
+        a = t1p10["mean"]
+        b = t1p10["std"]
+        c = t1p10["skew"]
+        d = t1p10["kurtosis"]
+        s = f"<p>{team__1} Last 10 pts scaled mean: {a:.2f}  sdev: {b:.2f}  skew {c:.2f}  kurtosis {d:.2f}\n</p>"
+        emailer += s
+        data[f"{team__1} Last 10 pts scaled mean"] = {
+            "mean": a,
+            "stdev": b,
+            "skew": c,
+            "kurtosis": d,
+        }
+
+        a = t1p5["mean"]
+        b = t1p5["std"]
+        c = t1p5["skew"]
+        d = t1p5["kurtosis"]
+        s = f"<p>{team__1} Last 5 pts scaled mean: {a:.2f}  sdev: {b:.2f}  skew {c:.2f}  kurtosis {d:.2f}\n</p>"
+        emailer += s
+        emailer += f"<p>*******************************************************************************************</p>"
+        data[f"{team__1} Last 5 pts scaled mean"] = {
+            "mean": a,
+            "stdev": b,
+            "skew": c,
+            "kurtosis": d,
+        }
+
+        a = t2ps["mean"]
+        b = t2ps["std"]
+        c = t2ps["skew"]
+        d = t2ps["kurtosis"]
+        s = f"<p>{team__2} Season pts scaled mean: {a:.2f}  sdev: {b:.2f}  skew {c:.2f}  kurtosis {d:.2f}\n</p>"
+        emailer += s
+        data[f"{team__2} Season pts scaled mean"] = {
+            "mean": a,
+            "stdev": b,
+            "skew": c,
+            "kurtosis": d,
+        }
+
+        a = t2p15["mean"]
+        b = t2p15["std"]
+        c = t2p15["skew"]
+        d = t2p15["kurtosis"]
+        s = f"<p>{team__2} Last 15 pts scaled mean: {a:.2f}  sdev: {b:.2f}  skew {c:.2f}  kurtosis {d:.2f}\n</p>"
+        emailer += s
+        data[f"{team__2} Last 15 pts scaled mean"] = {
+            "mean": a,
+            "stdev": b,
+            "skew": c,
+            "kurtosis": d,
+        }
+
+        a = t2p10["mean"]
+        b = t2p10["std"]
+        c = t2p10["skew"]
+        d = t2p10["kurtosis"]
+        s = f"<p>{team__2} Last 10 pts scaled mean: {a:.2f}  sdev: {b:.2f}  skew {c:.2f}  kurtosis {d:.2f}\n</p>"
+        emailer += s
+        data[f"{team__2} Last 10 pts scaled mean"] = {
+            "mean": a,
+            "stdev": b,
+            "skew": c,
+            "kurtosis": d,
+        }
+
+        a = t2p5["mean"]
+        b = t2p5["std"]
+        c = t2p5["skew"]
+        d = t2p5["kurtosis"]
+        s = f"<p>{team__2} Last 5 pts scaled mean: {a:.2f}  sdev: {b:.2f}  skew {c:.2f}  kurtosis {d:.2f}\n</p>"
+        emailer += s
+        data[f"{team__2} Last 5 pts scaled mean"] = {
+            "mean": a,
+            "stdev": b,
+            "skew": c,
+            "kurtosis": d,
+        }
+
+        emailer += f"<p>*******************************************************************************************</p>"
+        try:
+            diff_cdf = norm.cdf(
+                [i for i in range(41)], vps["mean_diff"], vps["std_diff"]
+            )
+
+            a = (diff_cdf[5] - diff_cdf[0]) * 100
+            emailer += f"<p>Score Difference Probability 1 to 5: {a:.2f} \n</p>"
+            b = (diff_cdf[10] - diff_cdf[5]) * 100
+            emailer += f"<p>Score Difference Probability 6 to 10: {b:.2f} \n</p>"
+            c = (diff_cdf[15] - diff_cdf[10]) * 100
+            emailer += f"<p>Score Difference Probability 11 to 15: {c:.2f} \n</p>"
+            d = (diff_cdf[20] - diff_cdf[15]) * 100
+            emailer += f"<p>Score Difference Probability 16 to 20: {d:.2f} \n</p>"
+            e = (diff_cdf[25] - diff_cdf[20]) * 100
+            emailer += f"<p>Score Difference Probability 21 to 25: {e:.2f} \n</p>"
+            f = (diff_cdf[30] - diff_cdf[25]) * 100
+            emailer += f"<p>Score Difference Probability 26 to 30: {f:.2f} \n</p>"
+            g = (diff_cdf[35] - diff_cdf[30]) * 100
+            emailer += f"<p>Score Difference Probability 31 to 35: {g:.2f} \n</p>"
+            h = (diff_cdf[40] - diff_cdf[35]) * 100
+            emailer += f"<p>Score Difference Probability 36 to 40: {h:.2f} \n</p>"
+            # noinspection PyTypedDict
+            data["Score Difference Probability"] = {
+                "1 to 5": a,
+                "6 to 10": b,
+                "11 to 15": c,
+                "16 to 20": d,
+                "21 to 25": e,
+                "26 to 30": f,
+                "31 to 35": g,
+                "36 to 40": h,
+            }
+        except KeyError:
+            emailer += f"<p>Score Difference Probability is not available.. \n</p>"
+            data["Score Difference Probability"] = {
+                "1 to 5": None,
+                "6 to 10": None,
+                "11 to 15": None,
+                "16 to 20": None,
+                "21 to 25": None,
+                "26 to 30": None,
+                "31 to 35": None,
+                "36 to 40": None,
+            }
+
+        head_to_head_df = pd.DataFrame(
+            {
+                "Dates": data["Last head to head dates"],
+                f"{team__1}_vs_{team__2}_wl": data[f"Last {team__1} head to head w/L"],
+                "pts_diff": data["Last head to head point differences"],
+            }
+        )
+        head_to_head_df["pts_diff_skew"] = None
+        head_to_head_df["pts_diff_kurtosis"] = None
+        head_to_head_df["pts_diff_skew"].iloc[-1] = data[
+            "Last head to head point differences skew"
+        ]
+        head_to_head_df["pts_diff_kurtosis"].iloc[-1] = data[
+            "Lst head to head point differences kurtosis"
+        ]
+
+        ii = "last_head_to_head_stats"
+        head_to_head_stats_df = pd.DataFrame(
+            {
+                f"{team__1}": [
+                    data[ii]["mean_1"],
+                    data[ii]["std_1"],
+                    data[ii]["median_1"],
+                    data[ii]["skew_1"],
+                    data[ii]["kurtosis"],
+                ],
+                f"{team__2}": [
+                    data[ii]["mean_2"],
+                    data[ii]["std_2"],
+                    data[ii]["median_2"],
+                    data[ii]["skew_2"],
+                    data[ii]["kurtosis_2"],
+                ],
+            },
+            index=["mean", "std", "median", "skew", "kurtosis"],
+        )
+
+        scaled_points_stats_df = pd.DataFrame(
+            [
+                data[f"{team__1} Season pts scaled mean"],
+                data[f"{team__2} Season pts scaled mean"],
+                data[f"{team__1} Last 15 pts scaled mean"],
+                data[f"{team__2} Last 15 pts scaled mean"],
+                data[f"{team__1} Last 10 pts scaled mean"],
+                data[f"{team__2} Last 10 pts scaled mean"],
+                data[f"{team__1} Last 5 pts scaled mean"],
+                data[f"{team__2} Last 5 pts scaled mean"],
+            ]
+        ).T
+
+        scaled_points_stats_df.columns = [
+            f"{team__1}_season",
+            f"{team__2}_season",
+            f"{team__1}_last_15",
+            f"{team__2}_last_15",
+            f"{team__1}_last_10",
+            f"{team__2}_last_10",
+            f"{team__1}_last_5",
+            f"{team__2}_last_5",
+        ]
+
+        score_diff_probability_df = pd.DataFrame(
+            data["Score Difference Probability"], index=["probability"]
+        ).T
+        resy.append(
+            {
+                "head_to_head_df": head_to_head_df,
+                "head_to_head_stats_df": head_to_head_stats_df,
+                "scaled_points_stats_df": scaled_points_stats_df,
+                "score_diff_probability_df": score_diff_probability_df,
+            }
+        )
+
+        print(21)
     pass
