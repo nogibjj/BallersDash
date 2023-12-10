@@ -230,7 +230,7 @@ if __name__ == "__main__":
         games,
         basketball_ref_games,
         team_abbreviation,
-    ) = load_data_from_db(seaso_n_, season__type_, today_, ss, se)
+    ) = load_data_from_db()
 
     for game in games:
         team__1 = game[0]

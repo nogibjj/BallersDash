@@ -1,7 +1,6 @@
 import requests
 import time
 import pandas as pd
-import sql
 from databricks import sql
 
 
