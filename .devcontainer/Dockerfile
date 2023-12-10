@@ -1,23 +1,18 @@
+# See here for image contents: https://github.com/microsoft/vscode-dev-containers/tree/v0.245.2/containers/codespaces-linux/.devcontainer/base.Dockerfile
 
-# https://hub.docker.com/_/python
-FROM python:3.9-slim
+FROM mcr.microsoft.com/vscode/devcontainers/universal:2-focal
 
-# Allow statements and log messages to immediately appear in the Knative logs
-ENV PYTHONUNBUFFERED True
-
-# Install production dependencies.
-RUN pip install Flask gunicorn
-
-# Copy local code to the container image.
-ENV APP_HOME /app
-WORKDIR $APP_HOME
-COPY . .
-
-# Install production dependencies.
-RUN pip install  --no-cache-dir -r requirements.txt
-
-ENV PORT 8080
-
-CMD streamlit run --server.port 8080 --server.enableCORS false mylib/NbaStatsDash.py
-
-#CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 --timeout 0 main:app
+# [Optional] Uncomment this section to install additional OS packages.
+# RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
+#     && apt-get -y install --no-install-recommends <your-package-list-here>
+RUN apt-get update && apt-get -y install --no-install-recommends \
+   python3.8-venv \
+   gcc 
+   
+ARG USER="codespace"
+ARG VENV_PATH="/home/${USER}/venv"
+COPY requirements.txt /tmp/
+COPY Makefile /tmp/
+RUN su $USER -c "/usr/bin/python3 -m venv /home/${USER}/venv" \
+   && su $USER -c "${VENV_PATH}/bin/pip --disable-pip-version-check --no-cache-dir install -r /tmp/requirements.txt" \
+   && rm -rf /tmp/requirements.txt 

@@ -1,7 +1,7 @@
-from locust import HttpUser, between, task
+from locust import HttpUser, task
 
 
-class WebsiteUser(HttpUser):
+class StreamlitUser(HttpUser):
     @task
-    def load_page(self):
-        self.client.get("/")
+    def visit_homepage(self):
+        self.client.get("/")  # Replace "/" with the URL of your Streamlit applications
