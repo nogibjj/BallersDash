@@ -5,7 +5,7 @@ from bokeh.plotting import figure
 from bokeh.models import ColumnDataSource, HoverTool, CrosshairTool, PanTool
 from bokeh.layouts import column
 from PIL import Image
-from Support.scraper import Scraper
+from scraper import Scraper
 
 
 @st.cache_data

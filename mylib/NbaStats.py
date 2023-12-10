@@ -5,7 +5,7 @@ from scipy.stats import norm, skew, kurtosis
 import pandas as pd
 from requests.exceptions import ReadTimeout
 from time import sleep
-from Support.Emailer import Emailer
+# from Support.Emailer import Emailer
 from BasketballReferenceLinks import BasketBallReferenceLinks
 from datetime import datetime, timedelta
 import calendar
