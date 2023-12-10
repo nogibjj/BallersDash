@@ -6,7 +6,15 @@ from bokeh.models import ColumnDataSource, HoverTool, CrosshairTool, PanTool
 from bokeh.layouts import column
 from PIL import Image
 from scraper import Scraper
+import logging
 
+#Logging the file
+logging.basicConfig(level=logging.DEBUG, filename = 'logging.log', filemode='w', format ="%(asctime)s %(levelname)s %(message)s", force=True)
+logging.debug("A DEBUG Message")
+logging.info("An INFO")
+logging.warning("A WARNING")
+logging.error("An ERROR")
+logging.critical("A message of CRITICAL Severity")
 
 @st.cache_data
 def load_data(seaso_n, season__type, toda_y, start, end):
@@ -130,8 +138,7 @@ def row_heatmap(row):
 
 
 if __name__ == '__main__':
-    # today_ = date.today()
-    today_ = date(2023, 12, 7)
+    today_ = date.today()
     bs_scraper = Scraper()
 
     st.set_page_config(layout="wide")
@@ -266,15 +273,20 @@ if __name__ == '__main__':
             if main_tab == 'Head to Head':
                 st.text(f"Head to Head")
                 col1, col2 = st.columns(2)
+                logging.info(f'The teams playing head to head are {team__1} VS {team__2}.')
                 with col1:
                     try:
                         st.dataframe(head_to_head_df)
+                        logging.info(f'The dataframe is successful with {team__1} VS {team__2}.')
                     except ValueError:
-                        st.text("Head to Head data fame not available.")
+                        logging.error('Head to Head data frame not available', exc_info = True)
+                        st.text("Head to Head data frame not available.")
                 with col2:
                     try:
                         st.dataframe(head_to_head_stats_df)
+                        logging.info(f'The dataframe is successful with {team__1} VS {team__2}.')
                     except ValueError:
+                        logging.error('Head to Head data frame not available', exc_info = True)
                         st.text('Head to Head stats data frame not available.')
 
                 m1 = head_to_head_stats_df[team__1]['mean']
@@ -300,7 +312,9 @@ if __name__ == '__main__':
                 with col1:
                     try:
                         st.bokeh_chart(column(h_2_h_team_2_graph_pdf, h_2_h_team_2_graph_cdf))
+                        logging.info(f'Head to Head distribution plots are successful with {team__1} VS {team__2}.')
                     except ValueError:
+                        logging.error('Head to Head data frame not available', exc_info = True)
                         st.text('Head to Head distribution plots not available.')
 
             vdf['GAME_DATE'] = pd.to_datetime(vdf['GAME_DATE'])
@@ -329,7 +343,9 @@ if __name__ == '__main__':
                 st.text(f"scaled_points_stats")
                 try:
                     st.dataframe(scaled_points_stats_df)
+                    logging.info(f'The scaled points dataframe is available for {team__1} VS {team__2}.')
                 except ValueError:
+                    logging.error('Scaled Points data frame not available for {team__1} VS {team__2}.', exc_info = True)
                     st.text('Scaled Points stats data frame not available')
 
                 t1['GAME_DATE'] = pd.to_datetime(t1['GAME_DATE'])
@@ -344,15 +360,19 @@ if __name__ == '__main__':
 
                 try:
                     st.bokeh_chart(p_r)
+                    logging.info(f'The raw scaled plots are available for {team__1} VS {team__2}.')
                 except ValueError:
                     st.text('raw scaled plots not available')
+                    logging.error('Raw scaled plots not available for {team__1} VS {team__2}.', exc_info = True)
 
             if main_tab == 'Head to Head':
                 with col2:
                     try:
                         st.bokeh_chart(column(pp0, pp))
+                        logging.info(f'The Head to Head Difference Raw Plots are available for {team__1} VS {team__2}.')
                     except ValueError:
-                        st.text('Head to Head Diff anf Raw plots not available')
+                        st.text('Head to Head Diff and Raw plots not available')
+                        logging.error('Head to Head Diff and Raw plots not available for {team__1} VS {team__2}.', exc_info = True)
                 col1, col2 = st.columns(2)
 
                 with col1:
@@ -388,8 +408,10 @@ if __name__ == '__main__':
                 with col2:
                     try:
                         st.dataframe(score_diff_probability_df.style.background_gradient(cmap="YlGnBu"))
+                        logging.info(f'The Score Difference Probability dataframe is available.')
                     except ValueError:
                         st.text('Score Diff Probability data frame not available')
+                        logging.error('Score Diff Probability data frame is not available.', exc_info = True)
 
                 all_diffs = list(range(0, 50))
                 m1 = score_diff_probability_df.mean()
@@ -400,8 +422,10 @@ if __name__ == '__main__':
                 with col1:
                     try:
                         st.bokeh_chart(column(p_1, p_2))
+                        logging.info(f'The Score Difference Probability dataframe is available')
                     except ValueError:
                         st.text('Score Diff Probability data frame not available')
+                        logging.error('Score Diff Probability data frame is not available', exc_info = True)
 
             if main_tab == 'Raw Stats':
                 st.text('Raw Stats')
@@ -418,7 +442,9 @@ if __name__ == '__main__':
                 p_r = raw_plots_helper(t1, team__1, p_r, 'black')
                 p_r = raw_plots_helper(t2, team__2, p_r, 'red')
 
+                logging.info(f'The checkbox for each team')
                 try:
+                    logging.info(f'See detail game histories')
                     if st.checkbox(f"See detail game histories"):
                         st.caption(team__1)
                         t1s = t1.style.applymap(color_by_score, subset=["WL"])
@@ -444,6 +470,7 @@ if __name__ == '__main__':
                     st.bokeh_chart(f, use_container_width=True)
 
                 except ValueError:
+                    logging.error('Raw Stats data frame not available', exc_info = True)
                     st.text('Raw data not available')
 
             if main_tab == "Injury Report":
@@ -452,9 +479,12 @@ if __name__ == '__main__':
                 injury_report = injury_report.loc[injury_report['Team'].isin(teams.values)]
                 st.dataframe(injury_report)
 
+    logging.info(f'Injury Report information.')
     try:
+        logging.info(f'Illusion image found so Injury Report information is available.')
         # replace with images/illusion.jpg when deploying
         image = Image.open('../images/illusion.jpg')
         st.image(image, caption='Time is constant.')
     except FileNotFoundError:
+        logging.error('Illusion image not found so Injury information is not available', exc_info = True)
         pass
