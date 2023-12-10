@@ -112,6 +112,12 @@ Access dynamic graphs for raw stats such as win percentage, field goal percentag
 
 Stay informed about the current injury status of NBA teams. The injury table provides real-time information on player injuries, helping users understand the potential impact on team performance.
 
+### Logging:
+In this project, we implemented logging to capture various events and activities. The log entries are timestamped and categorized by severity levels, including DEBUG, INFO, WARNING, ERROR, and CRITICAL. The log begins with a DEBUG message at 2023-12-10 14:42:01,325, followed by INFO, WARNING, ERROR, and CRITICAL messages. Subsequently, there is an INFO message indicating that logging is working. The logging then captures details about the processing of different NBA teams, such as ATL, BOS, CLE, NOP, CHI, DAL, DEN, GSW, HOU, LAC, LAL, MIA, MIL, MIN, BKN, NYK, ORL, IND, PHI, PHX, POR, SAC, SAS, OKC, TOR, UTA, MEM, WAS, and DET. Each team's processing includes DEBUG messages for starting HTTPS connections and INFO messages for finishing the processing. The log entries provide insights into the flow of the application, HTTP requests to the NBA stats API, and the successful completion of team processing tasks.
+
+<img width="628" alt="logging_screenshot" src="https://github.com/nogibjj/BallersDash/assets/141798228/40fc0092-603a-44da-a59e-4aed950c82a4">
+
+
 ### Data Engineering with Azure
 
 The subsequent deployment on Azure Web App adds another dimension to our architecture. Azure Web App provides a scalable and reliable platform for hosting containerized applications, and by utilizing the Docker image, our microservice seamlessly integrates into this environment. This deployment ensures that our microservice is not only efficiently hosted but also benefits from Azure's robust infrastructure. The use of the Docker image simplifies the deployment process, allowing us to harness the power of Azure Web App for orchestrating a comprehensive and efficient deployment pipeline. This pivotal step offers a public endpoint for our microservice, enhancing accessibility and showcasing the synergies between Docker and Azure Web App in facilitating a seamless integration process.
