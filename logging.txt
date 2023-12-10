@@ -1,0 +1,198 @@
+DEBUG A DEBUG Message
+2023-12-10 14:42:01,335 INFO An INFO
+2023-12-10 14:42:01,336 WARNING A WARNING
+2023-12-10 14:42:01,345 ERROR An ERROR
+2023-12-10 14:42:01,345 CRITICAL A message of CRITICAL Severity
+2023-12-10 14:42:01,345 INFO Logging is working.
+2023-12-10 14:42:01,353 DEBUG debug this information
+2023-12-10 14:42:04,763 INFO Processing team: ATL
+2023-12-10 14:42:04,786 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:42:05,857 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Playoffs&TeamID=1610612737 HTTP/1.1" 200 276
+2023-12-10 14:42:05,880 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:42:06,979 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Regular+Season&TeamID=1610612737 HTTP/1.1" 200 1292
+2023-12-10 14:42:07,003 INFO Finished processing team: ATL
+2023-12-10 14:42:07,007 INFO Processing team: BOS
+2023-12-10 14:42:07,010 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:42:08,115 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Regular+Season&TeamID=1610612738 HTTP/1.1" 200 1288
+2023-12-10 14:42:08,128 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:42:09,007 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Playoffs&TeamID=1610612738 HTTP/1.1" 200 276
+2023-12-10 14:42:09,029 INFO Finished processing team: BOS
+2023-12-10 14:42:09,045 INFO Processing team: CLE
+2023-12-10 14:42:09,045 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:42:09,975 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Playoffs&TeamID=1610612739 HTTP/1.1" 200 276
+2023-12-10 14:42:09,985 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:42:10,905 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Regular+Season&TeamID=1610612739 HTTP/1.1" 200 1342
+2023-12-10 14:42:10,920 INFO Finished processing team: CLE
+2023-12-10 14:42:10,920 INFO Processing team: NOP
+2023-12-10 14:42:10,926 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:42:11,776 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Regular+Season&TeamID=1610612740 HTTP/1.1" 200 1366
+2023-12-10 14:42:11,786 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:42:12,766 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Playoffs&TeamID=1610612740 HTTP/1.1" 200 276
+2023-12-10 14:42:12,779 INFO Finished processing team: NOP
+2023-12-10 14:42:12,779 INFO Processing team: CHI
+2023-12-10 14:42:12,791 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:42:13,741 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Playoffs&TeamID=1610612741 HTTP/1.1" 200 276
+2023-12-10 14:42:13,746 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:42:14,881 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Regular+Season&TeamID=1610612741 HTTP/1.1" 200 1359
+2023-12-10 14:42:14,891 INFO Finished processing team: CHI
+2023-12-10 14:42:14,891 INFO Processing team: DAL
+2023-12-10 14:42:14,899 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:42:16,194 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Regular+Season&TeamID=1610612742 HTTP/1.1" 200 1284
+2023-12-10 14:42:16,206 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:42:17,226 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Playoffs&TeamID=1610612742 HTTP/1.1" 200 276
+2023-12-10 14:42:17,235 INFO Finished processing team: DAL
+2023-12-10 14:42:17,235 INFO Processing team: DEN
+2023-12-10 14:42:17,245 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:42:18,666 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Playoffs&TeamID=1610612743 HTTP/1.1" 200 276
+2023-12-10 14:42:18,676 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:42:19,701 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Regular+Season&TeamID=1610612743 HTTP/1.1" 200 1368
+2023-12-10 14:42:19,717 INFO Finished processing team: DEN
+2023-12-10 14:42:19,717 INFO Processing team: GSW
+2023-12-10 14:42:19,717 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:42:20,565 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Regular+Season&TeamID=1610612744 HTTP/1.1" 200 1327
+2023-12-10 14:42:20,576 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:42:21,388 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Playoffs&TeamID=1610612744 HTTP/1.1" 200 276
+2023-12-10 14:42:21,404 INFO Finished processing team: GSW
+2023-12-10 14:42:21,404 INFO Processing team: HOU
+2023-12-10 14:42:21,407 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:42:22,459 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Playoffs&TeamID=1610612745 HTTP/1.1" 200 277
+2023-12-10 14:42:22,466 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:42:23,576 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Regular+Season&TeamID=1610612745 HTTP/1.1" 200 1173
+2023-12-10 14:42:23,595 INFO Finished processing team: HOU
+2023-12-10 14:42:23,595 INFO Processing team: LAC
+2023-12-10 14:42:23,595 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:42:24,466 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Regular+Season&TeamID=1610612746 HTTP/1.1" 200 1293
+2023-12-10 14:42:24,479 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:42:25,470 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Playoffs&TeamID=1610612746 HTTP/1.1" 200 276
+2023-12-10 14:42:25,486 INFO Finished processing team: LAC
+2023-12-10 14:42:25,486 INFO Processing team: LAL
+2023-12-10 14:42:25,486 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:42:26,436 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Playoffs&TeamID=1610612747 HTTP/1.1" 200 276
+2023-12-10 14:42:26,445 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:42:27,326 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Regular+Season&TeamID=1610612747 HTTP/1.1" 200 1351
+2023-12-10 14:42:27,336 INFO Finished processing team: LAL
+2023-12-10 14:42:27,336 INFO Processing team: MIA
+2023-12-10 14:42:27,341 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:42:28,575 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Regular+Season&TeamID=1610612748 HTTP/1.1" 200 1311
+2023-12-10 14:42:28,592 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:42:29,470 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Playoffs&TeamID=1610612748 HTTP/1.1" 200 277
+2023-12-10 14:42:29,484 INFO Finished processing team: MIA
+2023-12-10 14:42:29,485 INFO Processing team: MIL
+2023-12-10 14:42:29,485 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:42:30,490 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Playoffs&TeamID=1610612749 HTTP/1.1" 200 277
+2023-12-10 14:42:30,506 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:42:42,387 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Regular+Season&TeamID=1610612749 HTTP/1.1" 200 1319
+2023-12-10 14:42:42,403 INFO Finished processing team: MIL
+2023-12-10 14:42:42,405 INFO Processing team: MIN
+2023-12-10 14:42:42,405 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:42:43,236 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Regular+Season&TeamID=1610612750 HTTP/1.1" 200 1281
+2023-12-10 14:42:43,244 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:42:44,071 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Playoffs&TeamID=1610612750 HTTP/1.1" 200 276
+2023-12-10 14:42:44,090 INFO Finished processing team: MIN
+2023-12-10 14:42:44,090 INFO Processing team: BKN
+2023-12-10 14:42:44,095 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:42:44,875 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Playoffs&TeamID=1610612751 HTTP/1.1" 200 276
+2023-12-10 14:42:44,885 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:42:49,715 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Regular+Season&TeamID=1610612751 HTTP/1.1" 200 1268
+2023-12-10 14:42:49,726 INFO Finished processing team: BKN
+2023-12-10 14:42:49,726 INFO Processing team: NYK
+2023-12-10 14:42:49,730 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:42:50,749 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Regular+Season&TeamID=1610612752 HTTP/1.1" 200 1264
+2023-12-10 14:42:50,755 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:42:51,749 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Playoffs&TeamID=1610612752 HTTP/1.1" 200 276
+2023-12-10 14:42:51,761 INFO Finished processing team: NYK
+2023-12-10 14:42:51,761 INFO Processing team: ORL
+2023-12-10 14:42:51,765 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:42:52,736 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Playoffs&TeamID=1610612753 HTTP/1.1" 200 276
+2023-12-10 14:42:52,746 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:42:54,391 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Regular+Season&TeamID=1610612753 HTTP/1.1" 200 1311
+2023-12-10 14:42:54,399 INFO Finished processing team: ORL
+2023-12-10 14:42:54,407 INFO Processing team: IND
+2023-12-10 14:42:54,407 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:42:55,246 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Regular+Season&TeamID=1610612754 HTTP/1.1" 200 1230
+2023-12-10 14:42:55,255 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:42:56,061 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Playoffs&TeamID=1610612754 HTTP/1.1" 200 277
+2023-12-10 14:42:56,077 INFO Finished processing team: IND
+2023-12-10 14:42:56,077 INFO Processing team: PHI
+2023-12-10 14:42:56,077 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:42:56,966 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Playoffs&TeamID=1610612755 HTTP/1.1" 200 277
+2023-12-10 14:42:56,978 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:42:59,422 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Regular+Season&TeamID=1610612755 HTTP/1.1" 200 1261
+2023-12-10 14:42:59,430 INFO Finished processing team: PHI
+2023-12-10 14:42:59,430 INFO Processing team: PHX
+2023-12-10 14:42:59,430 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:43:00,259 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Regular+Season&TeamID=1610612756 HTTP/1.1" 200 1332
+2023-12-10 14:43:00,267 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:43:01,176 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Playoffs&TeamID=1610612756 HTTP/1.1" 200 276
+2023-12-10 14:43:01,186 INFO Finished processing team: PHX
+2023-12-10 14:43:01,186 INFO Processing team: POR
+2023-12-10 14:43:01,186 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:43:02,000 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Playoffs&TeamID=1610612757 HTTP/1.1" 200 277
+2023-12-10 14:43:02,008 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:43:02,920 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Regular+Season&TeamID=1610612757 HTTP/1.1" 200 1260
+2023-12-10 14:43:02,941 INFO Finished processing team: POR
+2023-12-10 14:43:02,946 INFO Processing team: SAC
+2023-12-10 14:43:02,948 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:43:03,797 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Regular+Season&TeamID=1610612758 HTTP/1.1" 200 1242
+2023-12-10 14:43:03,805 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:43:04,585 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Playoffs&TeamID=1610612758 HTTP/1.1" 200 277
+2023-12-10 14:43:04,595 INFO Finished processing team: SAC
+2023-12-10 14:43:04,595 INFO Processing team: SAS
+2023-12-10 14:43:04,595 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:43:06,485 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Playoffs&TeamID=1610612759 HTTP/1.1" 200 277
+2023-12-10 14:43:06,497 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:43:07,355 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Regular+Season&TeamID=1610612759 HTTP/1.1" 200 1261
+2023-12-10 14:43:07,367 INFO Finished processing team: SAS
+2023-12-10 14:43:07,367 INFO Processing team: OKC
+2023-12-10 14:43:07,367 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:43:08,185 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Regular+Season&TeamID=1610612760 HTTP/1.1" 200 1296
+2023-12-10 14:43:08,192 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:43:08,996 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Playoffs&TeamID=1610612760 HTTP/1.1" 200 276
+2023-12-10 14:43:09,011 INFO Finished processing team: OKC
+2023-12-10 14:43:09,016 INFO Processing team: TOR
+2023-12-10 14:43:09,016 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:43:09,976 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Playoffs&TeamID=1610612761 HTTP/1.1" 200 276
+2023-12-10 14:43:09,992 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:43:10,806 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Regular+Season&TeamID=1610612761 HTTP/1.1" 200 1331
+2023-12-10 14:43:10,816 INFO Finished processing team: TOR
+2023-12-10 14:43:10,816 INFO Processing team: UTA
+2023-12-10 14:43:10,821 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:43:11,696 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Regular+Season&TeamID=1610612762 HTTP/1.1" 200 1332
+2023-12-10 14:43:11,700 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:43:12,495 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Playoffs&TeamID=1610612762 HTTP/1.1" 200 276
+2023-12-10 14:43:12,505 INFO Finished processing team: UTA
+2023-12-10 14:43:12,505 INFO Processing team: MEM
+2023-12-10 14:43:12,505 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:43:13,295 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Playoffs&TeamID=1610612763 HTTP/1.1" 200 276
+2023-12-10 14:43:13,311 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:43:14,366 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Regular+Season&TeamID=1610612763 HTTP/1.1" 200 1272
+2023-12-10 14:43:14,379 INFO Finished processing team: MEM
+2023-12-10 14:43:14,379 INFO Processing team: WAS
+2023-12-10 14:43:14,385 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:43:15,226 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Regular+Season&TeamID=1610612764 HTTP/1.1" 200 1254
+2023-12-10 14:43:15,238 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:43:16,017 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Playoffs&TeamID=1610612764 HTTP/1.1" 200 276
+2023-12-10 14:43:16,025 INFO Finished processing team: WAS
+2023-12-10 14:43:16,025 INFO Processing team: DET
+2023-12-10 14:43:16,030 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:43:16,905 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Playoffs&TeamID=1610612765 HTTP/1.1" 200 276
+2023-12-10 14:43:16,916 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:43:17,736 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Regular+Season&TeamID=1610612765 HTTP/1.1" 200 1301
+2023-12-10 14:43:17,745 INFO Finished processing team: DET
+2023-12-10 14:43:17,750 INFO Processing team: CHA
+2023-12-10 14:43:17,750 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:43:18,546 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Regular+Season&TeamID=1610612766 HTTP/1.1" 200 1225
+2023-12-10 14:43:18,548 DEBUG Starting new HTTPS connection (1): stats.nba.com:443
+2023-12-10 14:43:19,463 DEBUG https://stats.nba.com:443 "GET /stats/teamgamelog?DateFrom=&DateTo=&LeagueID=&Season=2023-24&SeasonType=Playoffs&TeamID=1610612766 HTTP/1.1" 200 276
+2023-12-10 14:43:19,478 INFO Finished processing team: CHA
+2023-12-10 14:43:19,589 INFO Injury Report information.
+2023-12-10 14:43:19,589 INFO Illusion image found so Injury Report information is available.
+2023-12-10 14:43:19,596 ERROR Illusion image not found so Injury information is not available
+Traceback (most recent call last):
+  File "C:\Users\Simrun Sharma\Desktop\Git_Data_Engineering\BallersDash\mylib\nba_logging.py", line 776, in <module>
+    image = Image.open("../images/illusion.jpg")
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Simrun Sharma\miniconda3\Lib\site-packages\PIL\Image.py", line 3218, in open
+    fp = builtins.open(filename, "rb")
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '../images/illusion.jpg'
