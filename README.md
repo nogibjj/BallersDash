@@ -4,6 +4,8 @@
 
 The NBA Statistics Dashboard is an immersive and dynamic analytics tool that empowers users with in-depth insights into NBA teams and players, utilizing head-to-head analytics, raw statistics, dynamic visualizations, and advanced ranking algorithms. Showcasing a user-friendly interface for analyzing gaming trends, making informed decisions for fantasy league gameplay, and enhancing the sports betting experience.
 
+![NBA_FLOWCHART_transparent (1)](https://github.com/nogibjj/BallersDash/assets/141798228/843d3b23-9c23-4fd2-9ac1-6cfe2ce55208)
+
 ### Project Overview
 
 The NBA Statistics Dashboard is an innovative and user-focused project that harnesses daily data scraping to create a dynamic platform for NBA enthusiasts, fantasy league participants, and sports bettors. This cutting-edge tool offers a rich set of functionalities, including head-to-head analytics, raw statistics exploration, interactive visualization, team ranking insights, probability distribution graphs, point difference analytics, real-time injury updates, and dynamic raw stats graphs. By providing a comprehensive and customizable view of NBA team dynamics, the dashboard redefines the landscape of NBA statistics, empowering users to make informed decisions in fantasy leagues and sports betting.
