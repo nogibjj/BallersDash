@@ -69,7 +69,7 @@ def get_team_game_log(team_id, season, season_type):
     df = pd.concat(
         [
             teamgamelog.TeamGameLog(
-                season=season, season_type_all_star=[s_], team_id=team_id
+                season=season, season_type_all_star=[s_], team_id=team_id, timeout=60
             ).get_data_frames()[0]
             for s_ in season_type
         ]
@@ -670,8 +670,6 @@ if __name__ == "__main__":
     basketball_ref_games = get_all_games_current_season("2022-10-01", "2023-3-30")
     seaso_n_ = "2022-23"
     season__type_ = ["Regular Season", "Playoffs"]
-
-    mailer_agent = Emailer()
 
     teams_ = teams.get_teams()
     teams__df = pd.DataFrame.from_dict(teams_)
