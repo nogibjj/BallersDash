@@ -1,4 +1,3 @@
-"""NBA Stats Dashboard"""
 from NbaStats import *
 import streamlit as st
 from datetime import date
@@ -6,13 +5,11 @@ from bokeh.plotting import figure
 from bokeh.models import ColumnDataSource, HoverTool, CrosshairTool, PanTool
 from bokeh.layouts import column
 from PIL import Image
-from scraper import Scraper
-from etl import load_data as load_data_from_db
+from Support.scraper import Scraper
 
 
 @st.cache_data
 def load_data(seaso_n, season__type, toda_y, start, end):
-    """Load data from basketball_ref_games, teams, and team_ranker"""
     basketball_ref_games_ = get_all_games_current_season(str(start), str(end))
     teams__ = teams.get_teams()
     teams_df = pd.DataFrame.from_dict(teams__)
@@ -44,7 +41,6 @@ def load_data(seaso_n, season__type, toda_y, start, end):
 
 
 def h_2_h_stats_helper(dat, dict_, team_, id_):
-    """Helper function to add stats to a dictionary"""
     a_ = dat["mean"]
     b_ = dat["std"]
     c_ = dat["skew"]
@@ -56,7 +52,6 @@ def h_2_h_stats_helper(dat, dict_, team_, id_):
 def h_2_h_helper(
     all_scores_: list, m: float, s_: float, col: str, team_: str, pcdf, id_, p=0
 ):
-    """Helper function to create a plot"""
     max_pts = m + s_  # mean + stddev
     min_pts = m - s_
     max_pcdf = max(pcdf)
@@ -91,7 +86,6 @@ def h_2_h_helper(
 def h_2h_pdf_plot_helper(
     all_scores_: list, m: float, s_: float, col: str, team_: str, id_: str, p=0
 ) -> figure:
-    """Helper function to create a PDF plot"""
     pdf = [p * 100 for p in norm.pdf(all_scores_, m, s_)]
     return h_2_h_helper(all_scores_, m, s_, col, team_, pdf, id_, p)
 
@@ -99,13 +93,11 @@ def h_2h_pdf_plot_helper(
 def h_2h_cdf_plot_helper(
     all_scores_: list, m: float, s_: float, col: str, team_: str, id_: str, p=0
 ) -> figure:
-    """Helper function to create a CDF plot"""
     cdf = [p * 100 for p in norm.cdf(all_scores_, m, s_)]
     return h_2_h_helper(all_scores_, m, s_, col, team_, cdf, id_, p)
 
 
 def scaled_plot_helper(m1_, s1_, m2_, s2_, all_scores_, team_1, team_2, id_):
-    """Helper function to create a scaled plot"""
     szn_team_1_graph = h_2h_pdf_plot_helper(
         all_scores_, m1_, s1_, "black", team_1, f"PDF {id_}"
     )
@@ -130,7 +122,6 @@ def scaled_plot_helper(m1_, s1_, m2_, s2_, all_scores_, team_1, team_2, id_):
 
 
 def raw_plots_helper(t, team_, p, clr, mode=0, src_=None):
-    """Helper function to create a raw plot"""
     if mode == 0:
         title = f"{team_} Raw Points"
         src = ColumnDataSource(
@@ -162,7 +153,6 @@ def raw_plots_helper(t, team_, p, clr, mode=0, src_=None):
 
 # Define a function to apply styles to a DataFrame
 def color_by_score(val):
-    """Helper function to color a DataFrame"""
     if val == "W":
         color = "green"
     else:
@@ -172,7 +162,6 @@ def color_by_score(val):
 
 # Define a function to create a row-wise heatmap
 def row_heatmap(row):
-    """Helper function to create a row-wise heatmap"""
     # Normalize the row values to the range [0, 1]
     normed = (row - row.min()) / (row.max() - row.min())
     # Use seaborn's color map to create a color palette
@@ -193,8 +182,7 @@ def row_heatmap(row):
 
 
 if __name__ == "__main__":
-    # today_ = date.today()
-    today_ = date(2023, 12, 8)
+    today_ = date(2023, 12, 7)
     bs_scraper = Scraper()
 
     st.set_page_config(layout="wide")
@@ -212,7 +200,7 @@ if __name__ == "__main__":
     with col2:
         ss = st.date_input("Start Day", date(2023, 10, 1))
     with col3:
-        se = st.date_input("End Day", today_)
+        se = st.date_input("End Day", date(2024, 4, 1))
     with col4:
         options = st.multiselect(
             "Game Types", ["Regular Season", "Playoffs"], ["Regular Season", "Playoffs"]
@@ -230,7 +218,7 @@ if __name__ == "__main__":
         games,
         basketball_ref_games,
         team_abbreviation,
-    ) = load_data_from_db()
+    ) = load_data(seaso_n_, season__type_, today_, ss, se)
 
     for game in games:
         team__1 = game[0]
