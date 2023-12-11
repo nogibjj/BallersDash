@@ -1,23 +1,18 @@
-# Use an official Python runtime as a parent image
-FROM python:3.8
+# See here for image contents: https://github.com/microsoft/vscode-dev-containers/tree/v0.245.2/containers/codespaces-linux/.devcontainer/base.Dockerfile
 
-# Set the working directory in the container
-WORKDIR /usr/src/app
+FROM mcr.microsoft.com/vscode/devcontainers/universal:2-focal
 
-# Copy the local requirements.txt file into the container at /usr/src/app
-COPY requirements.txt ./
-
-# Install any needed packages specified in requirements.txt
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Copy the local code into the container at /usr/src/app
-COPY . .
-
-# Make port 80 available to the world outside this container
-EXPOSE 80
-
-# Define environment variable
-ENV NAME World
-
-# Run app.py when the container launches
-CMD ["python", "app.py"]
+# [Optional] Uncomment this section to install additional OS packages.
+# RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
+#     && apt-get -y install --no-install-recommends <your-package-list-here>
+RUN apt-get update && apt-get -y install --no-install-recommends \
+   python3.8-venv \
+   gcc 
+   
+ARG USER="codespace"
+ARG VENV_PATH="/home/${USER}/venv"
+COPY requirements.txt /tmp/
+COPY Makefile /tmp/
+RUN su $USER -c "/usr/bin/python3 -m venv /home/${USER}/venv" \
+   && su $USER -c "${VENV_PATH}/bin/pip --disable-pip-version-check --no-cache-dir install -r /tmp/requirements.txt" \
+   && rm -rf /tmp/requirements.txt 
