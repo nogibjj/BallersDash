@@ -1,10 +1,10 @@
-# NBA Statistics Dashboard
+# NBA Statistics Dashboard 🏀
+[![CI](https://github.com/nogibjj/BallersDash/actions/workflows/cicd.yml/badge.svg)](https://github.com/nogibjj/BallersDash/actions/workflows/cicd.yml)
 
 ### Team Members: Rakeen Rouf, Osama Ahmed, Faraz Jawed, Simrun Sharma
 
 The NBA Statistics Dashboard is an immersive and dynamic analytics tool that empowers users with in-depth insights into NBA teams and players, utilizing head-to-head analytics, raw statistics, dynamic visualizations, and advanced ranking algorithms. Showcasing a user-friendly interface for analyzing gaming trends, making informed decisions for fantasy league gameplay, and enhancing the sports betting experience.
-
-![NBA_FLOWCHART_transparent (1)](https://github.com/nogibjj/BallersDash/assets/141798228/843d3b23-9c23-4fd2-9ac1-6cfe2ce55208)
+![NBA_FLOWCHART_white](https://github.com/nogibjj/BallersDash/assets/141798228/0d6e250c-9c80-4ed6-ab75-fc1b20d87adc)
 
 ### Project Overview
 
@@ -49,24 +49,22 @@ On Basketball Reference, you can find:
 
 6. **Point Difference Interactive Graph:**
    - Explore an interactive graph displaying the point difference in head-to-head matchups. This graph offers a dynamic visualization of how the point difference between teams varies across different games.
-
+   
 7. **Current Injury Table:**
    - Stay informed about the current injury status of NBA teams. The injury table provides real-time information on player injuries, helping users understand the potential impact on team performance.
 
 8. **Dynamic Raw Stats Graphs:**
    - Access dynamic graphs for raw stats such as win percentage, field goal percentage, 3-point attempts, defensive rebounds, and more. Users can customize the graphs based on their preferences and input criteria.
 
-The NBA Stats Dashboard combines analytical depth with interactive features, enabling users to gain a holistic understanding of team dynamics, performance trends, and potential influencing factors.
-
 ### Dashboard Display
-
-The dashboard is fully displayed utilizing the Python package ```Flask```, which is an easy way to combine written Python code and HTML code. The HTML code is necessary to have an attractive interface, with simple UI features, to facilitate the information for thet user. The HTML code was written to have a display page that requests a selection of a game, a date range of interest, and a month/day of interest. 
-
-From here, the microservice displays a "waiting" page, which is meant to indicate to the user that inforamtion is being prepared. Once ready, the microservice will finally show the dashboard itself. This will have a variety of graphs, explained as well, so that the user can interact and understand. There will also be a button to allow the user to enter another game, or change their query selection.
+![dashboard_display](https://github.com/nogibjj/BallersDash/assets/141798228/7218eea3-0fd0-4939-9d6a-efc9f8d4a394)
+The Streamlit-based NBA Statistics Dashboard provides a sleek and user-friendly interface for exploring intricate NBA statistics. Users can effortlessly select games, specify date ranges, and choose points of interest. Once data is processed, the dynamic dashboard unfolds, featuring head-to-head analytics, raw team statistics, and interactive visualizations. With customizable parameters, including team rankings, injury updates, and dynamic raw stats graphs, the interface ensures an immersive and tailored experience for fantasy league players, sports bettors, and basketball enthusiasts alike.
 
 ### Detailed ETL Pipeline Workflow
 
 Our ETL (Extract, Transform, Load) pipeline orchestrates a seamless flow of data from Basketball Reference to our Azure Databricks SQL Warehouse, enriching it with analytics. Here's an in-depth breakdown:
+
+![ETL_workflow](https://github.com/nogibjj/BallersDash/assets/141798228/3979f626-f6d3-4155-9b88-16f3c260a611)
 
 ## 1. Data Extraction:
    - The process commences by extracting raw team data from Basketball Reference, a prominent sports statistics website.
@@ -100,35 +98,45 @@ By synergizing the capabilities of Apache Spark, Azure Databricks, and a meticul
 
 Access Probability Distribution Function (PDF) and Cumulative Distribution Function (CDF) graphs for team vs. team points data. These interactive graphs represent scaled points for the last 5, 10, 15, and all games in the season. Points are scaled to reflect the opposing team's strength, determined by a custom ranking algorithm.
 
-**Point Difference Interactive Graph:**
+PDF GRAPHS:
+![PDF_graphs](https://github.com/nogibjj/BallersDash/assets/141798228/69751389-68ce-4334-a847-ad7142bcbe3a)
 
-Explore an interactive graph displaying the point difference in head-to-head matchups. This graph offers a dynamic visualization of how the point difference between teams varies across different games.
+CDF GRAPHS:
+![cdf_graphs](https://github.com/nogibjj/BallersDash/assets/141798228/61fd2773-ea24-4edd-a118-70fb3a9210ce)
+
+**Point Difference Interactive Graph and Point Difference Probabilites Graph:**
+
+The Point Difference Probabilities graph anticipates future NBA game outcomes by providing a forecast based on cumulative distribution functions (CDF) for points scored by teams. On the other hand, the Point Difference Interactive Graph offers insights into historical trends, considering the point difference across the last 5, 10, and full season games. While the former is geared towards predictive analytics, the latter serves as a retrospective tool, capturing the dynamics of teams in recent matchups and the overall season.
+![scaled_points](https://github.com/nogibjj/BallersDash/assets/141798228/6e7b4f52-848c-482e-906f-e30b556f70a8)
 
 **Dynamic Raw Stats Graphs:**
 
 Access dynamic graphs for raw stats such as win percentage, field goal percentage, 3-point attempts, defensive rebounds, and more. Users can customize the graphs based on their preferences and input criteria.
+![raw_stats](https://github.com/nogibjj/BallersDash/assets/141798228/da9f865d-b5fe-47d4-a493-ad22980a85bf)
+![raw_stats_head](https://github.com/nogibjj/BallersDash/assets/141798228/77082248-4ed6-4a95-a6e0-1f2051decc9c)
 
 **Current Injury Table:**
 
 Stay informed about the current injury status of NBA teams. The injury table provides real-time information on player injuries, helping users understand the potential impact on team performance.
+![injury_report](https://github.com/nogibjj/BallersDash/assets/141798228/c59a77d3-c4c5-4086-8e11-b1f5eb50d755)
 
 ### Logging:
 In this project, we implemented logging to capture various events and activities. The log entries are timestamped and categorized by severity levels, including DEBUG, INFO, WARNING, ERROR, and CRITICAL. The log begins with a DEBUG message at 2023-12-10 14:42:01,325, followed by INFO, WARNING, ERROR, and CRITICAL messages. Subsequently, there is an INFO message indicating that logging is working. The logging then captures details about the processing of different NBA teams, such as ATL, BOS, CLE, NOP, CHI, DAL, DEN, GSW, HOU, LAC, LAL, MIA, MIL, MIN, BKN, NYK, ORL, IND, PHI, PHX, POR, SAC, SAS, OKC, TOR, UTA, MEM, WAS, and DET. Each team's processing includes DEBUG messages for starting HTTPS connections and INFO messages for finishing the processing. The log entries provide insights into the flow of the application, HTTP requests to the NBA stats API, and the successful completion of team processing tasks.
 
 <img width="628" alt="logging_screenshot" src="https://github.com/nogibjj/BallersDash/assets/141798228/40fc0092-603a-44da-a59e-4aed950c82a4">
 
-
 ### Data Engineering with Azure
 
 The subsequent deployment on Azure Web App adds another dimension to our architecture. Azure Web App provides a scalable and reliable platform for hosting containerized applications, and by utilizing the Docker image, our microservice seamlessly integrates into this environment. This deployment ensures that our microservice is not only efficiently hosted but also benefits from Azure's robust infrastructure. The use of the Docker image simplifies the deployment process, allowing us to harness the power of Azure Web App for orchestrating a comprehensive and efficient deployment pipeline. This pivotal step offers a public endpoint for our microservice, enhancing accessibility and showcasing the synergies between Docker and Azure Web App in facilitating a seamless integration process.
 
-### Docker Imaging and DockerHub
+### Docker Imaging and [DockerHub](https://hub.docker.com/repository/docker/shawir/nbastats/general)
 
 The utilization of Docker plays a pivotal role in achieving the seamless integration of our microservice with a data pipeline. By encapsulating our microservice and its dependencies into a Docker container, we ensure consistent performance across diverse environments. The choice of Python for development aligns with Docker's flexibility, allowing us to package and distribute our microservice effortlessly. Incorporating logging within the microservice enhances visibility into its performance and aids in troubleshooting.
 
 Furthermore, containerizing our microservice with Docker images adds an additional layer of security and efficiency, stripping away unnecessary components and reducing the attack surface. The inclusion of a Dockerfile in the repository streamlines the containerization process and facilitates version control.
 
 Uploading the Docker image to DockerHub serves as a centralized repository, enhancing collaboration and accessibility for future deployments. This step ensures that the functioning container is readily available, adhering to best practices in container management and versioning.
+![dockerhub_final](https://github.com/nogibjj/BallersDash/assets/141798228/87f449c9-7535-48fb-86a0-19fcffccc13f)
 
 ### GitHub Actions
 
@@ -143,6 +151,9 @@ To evaluate the scalability and performance of the NBA Stats web application rig
 
 ### IaC(Infrastruce as Code) and SQL WareHouse(DataBricks)
 Our project meticulously meets the specified requirements for Data Engineering and Infrastructure as Code (IaC), delivering a comprehensive and efficient sports analytics platform. In adherence to Data Engineering principles, we employ Apache Spark, a robust data engineering library, for the transformation phase. This ensures optimal structuring, cleaning, and manipulation of the extracted raw team data, encompassing player statistics, team metrics, and game details. The Azure Databricks SQL Warehouse serves as our scalable and performant database solution, forming the backbone for structured tables and seamless querying. Our ETL pipeline, orchestrated by a Python logic script, operates daily at 6 AM, automating the data flow to guarantee up-to-date analytics. Furthermore, our project excels in IaC by utilizing Azure Databricks for infrastructure setup and management. This integration provides a scalable, cloud-based environment for our ETL processes, aligning with the principles of Infrastructure as Code. The cohesive synergy of Spark, Azure Databricks, and IaC ensures a reliable, efficient, and up-to-date foundation for sports analytics, empowering users with valuable insights for informed decision-making.
+
+
+In our project, Infrastructure as Code (IaC) is employed using Terraform with Azure to automate and standardize deployment and environment configurations. This approach ensures consistent infrastructure provisioning, minimizing manual errors and enhancing reproducibility across different environments. By leveraging Terraform's capabilities, the team can efficiently manage Azure resources, facilitating scalability and maintaining an agile development workflow.
 
 ### Run this App on Your Own!
 
