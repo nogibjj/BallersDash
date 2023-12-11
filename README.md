@@ -1,4 +1,4 @@
-# NBA Statistics Dashboard
+# NBA Statistics Dashboard 🏀
 [![CI](https://github.com/nogibjj/BallersDash/actions/workflows/cicd.yml/badge.svg)](https://github.com/nogibjj/BallersDash/actions/workflows/cicd.yml)
 
 ### Team Members: Rakeen Rouf, Osama Ahmed, Faraz Jawed, Simrun Sharma
@@ -63,6 +63,8 @@ The Streamlit-based NBA Statistics Dashboard provides a sleek and user-friendly 
 ### Detailed ETL Pipeline Workflow
 
 Our ETL (Extract, Transform, Load) pipeline orchestrates a seamless flow of data from Basketball Reference to our Azure Databricks SQL Warehouse, enriching it with analytics. Here's an in-depth breakdown:
+
+![ETL_workflow](https://github.com/nogibjj/BallersDash/assets/141798228/3979f626-f6d3-4155-9b88-16f3c260a611)
 
 ## 1. Data Extraction:
    - The process commences by extracting raw team data from Basketball Reference, a prominent sports statistics website.
