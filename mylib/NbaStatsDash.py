@@ -186,7 +186,7 @@ if __name__ == "__main__":
     bs_scraper = Scraper()
 
     st.set_page_config(layout="wide")
-    st.title("NBA Stats Dashboard. By: Rakeen Rouf")
+    st.title("NBA Stats Dashboard")
     col1, col2, col3, col4 = st.columns(4)
 
     with col1:
