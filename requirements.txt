@@ -95,3 +95,6 @@ webencodings==0.5.1
 wsproto==1.1.0
 xyzservices==2023.2.0
 zipp==3.15.0
+databricks==0.2
+databricks_sql_connector==2.9.3
+sql
