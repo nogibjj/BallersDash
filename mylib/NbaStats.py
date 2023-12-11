@@ -5,8 +5,7 @@ from scipy.stats import norm, skew, kurtosis
 import pandas as pd
 from requests.exceptions import ReadTimeout
 from time import sleep
-
-# from Support.Emailer import Emailer
+from Support.Emailer import Emailer
 from BasketballReferenceLinks import BasketBallReferenceLinks
 from datetime import datetime, timedelta
 import calendar
@@ -260,8 +259,8 @@ def get_stats(
     )
     team_1_opp = get_team_log_vs_opp(team_1_log, team_2)
     team_2_opp = get_team_log_vs_opp(team_2_log, team_1)
-    team_1_log["PTS"] = (team_1_log["PTS"] * team_1_log[0]) / 100
-    team_2_log["PTS"] = (team_2_log["PTS"] * team_2_log[0]) / 100
+    # team_1_log["PTS"] = (team_1_log["PTS"] * team_1_log[0]) / 100
+    # team_2_log["PTS"] = (team_2_log["PTS"] * team_2_log[0]) / 100
     vs_df = get_vs_points(team_1_opp, team_2_opp)
 
     team_1_full_name = team_names.loc[team_names.abbreviation == team_1].full_name.iloc[
@@ -284,11 +283,11 @@ def get_stats(
     try:
         vs_df_2 = vs_df_2.rename(columns={"Date": "GAME_DATE"})
         vs_df_2["PTS_1"] = vs_df_2.apply(
-            lambda r: r["PTS.1"] if r["Home/Neutral"] == team_1_full_name else r["PTS"],
+            lambda r: r["PTS1"] if r["Home/Neutral"] == team_1_full_name else r["PTS"],
             axis=1,
         )
         vs_df_2["PTS_2"] = vs_df_2.apply(
-            lambda r: r["PTS.1"] if r["Home/Neutral"] == team_2_full_name else r["PTS"],
+            lambda r: r["PTS1"] if r["Home/Neutral"] == team_2_full_name else r["PTS"],
             axis=1,
         )
         vs_df_2["PTS_DIFF"] = vs_df_2["PTS_1"] - vs_df_2["PTS_2"]
