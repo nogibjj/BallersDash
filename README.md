@@ -3,7 +3,6 @@
 
 ### Team Members: Rakeen Rouf, Osama Ahmed, Faraz Jawed, Simrun Sharma
 
-The NBA Statistics Dashboard is an immersive and dynamic analytics tool that empowers users with in-depth insights into NBA teams and players, utilizing head-to-head analytics, raw statistics, dynamic visualizations, and advanced ranking algorithms. Showcasing a user-friendly interface for analyzing gaming trends, making informed decisions for fantasy league gameplay, and enhancing the sports betting experience.
 ![NBA_FLOWCHART_white](https://github.com/nogibjj/BallersDash/assets/141798228/0d6e250c-9c80-4ed6-ab75-fc1b20d87adc)
 
 ### Project Overview
