@@ -49,20 +49,16 @@ On Basketball Reference, you can find:
 
 6. **Point Difference Interactive Graph:**
    - Explore an interactive graph displaying the point difference in head-to-head matchups. This graph offers a dynamic visualization of how the point difference between teams varies across different games.
-
+   
 7. **Current Injury Table:**
    - Stay informed about the current injury status of NBA teams. The injury table provides real-time information on player injuries, helping users understand the potential impact on team performance.
 
 8. **Dynamic Raw Stats Graphs:**
    - Access dynamic graphs for raw stats such as win percentage, field goal percentage, 3-point attempts, defensive rebounds, and more. Users can customize the graphs based on their preferences and input criteria.
 
-The NBA Stats Dashboard combines analytical depth with interactive features, enabling users to gain a holistic understanding of team dynamics, performance trends, and potential influencing factors.
-
 ### Dashboard Display
 
-The dashboard is fully displayed utilizing the Python package ```Flask```, which is an easy way to combine written Python code and HTML code. The HTML code is necessary to have an attractive interface, with simple UI features, to facilitate the information for thet user. The HTML code was written to have a display page that requests a selection of a game, a date range of interest, and a month/day of interest. 
-
-From here, the microservice displays a "waiting" page, which is meant to indicate to the user that inforamtion is being prepared. Once ready, the microservice will finally show the dashboard itself. This will have a variety of graphs, explained as well, so that the user can interact and understand. There will also be a button to allow the user to enter another game, or change their query selection.
+The Streamlit-based NBA Statistics Dashboard provides a sleek and user-friendly interface for exploring intricate NBA statistics. Users can effortlessly select games, specify date ranges, and choose points of interest. Once data is processed, the dynamic dashboard unfolds, featuring head-to-head analytics, raw team statistics, and interactive visualizations. With customizable parameters, including team rankings, injury updates, and dynamic raw stats graphs, the interface ensures an immersive and tailored experience for fantasy league players, sports bettors, and basketball enthusiasts alike.
 
 ### Detailed ETL Pipeline Workflow
 
@@ -99,11 +95,16 @@ By synergizing the capabilities of Apache Spark, Azure Databricks, and a meticul
 **Probability Distribution and CDF Graphs:**
 
 Access Probability Distribution Function (PDF) and Cumulative Distribution Function (CDF) graphs for team vs. team points data. These interactive graphs represent scaled points for the last 5, 10, 15, and all games in the season. Points are scaled to reflect the opposing team's strength, determined by a custom ranking algorithm.
-![PDF_graphs](https://github.com/nogibjj/BallersDash/assets/141798228/0fd8b1c8-86db-4862-a453-b4b82e422648)
 
-**Point Difference Interactive Graph:**
+PDF GRAPHS:
+![PDF_graphs](https://github.com/nogibjj/BallersDash/assets/141798228/69751389-68ce-4334-a847-ad7142bcbe3a)
 
-Explore an interactive graph displaying the point difference in head-to-head matchups. This graph offers a dynamic visualization of how the point difference between teams varies across different games.
+CDF GRAPHS:
+![cdf_graphs](https://github.com/nogibjj/BallersDash/assets/141798228/61fd2773-ea24-4edd-a118-70fb3a9210ce)
+
+**Point Difference Interactive Graph and Point Difference Probabilites Graph:**
+
+The Point Difference Probabilities graph anticipates future NBA game outcomes by providing a forecast based on cumulative distribution functions (CDF) for points scored by teams. On the other hand, the Point Difference Interactive Graph offers insights into historical trends, considering the point difference across the last 5, 10, and full season games. While the former is geared towards predictive analytics, the latter serves as a retrospective tool, capturing the dynamics of teams in recent matchups and the overall season.
 ![scaled_points](https://github.com/nogibjj/BallersDash/assets/141798228/6e7b4f52-848c-482e-906f-e30b556f70a8)
 
 **Dynamic Raw Stats Graphs:**
@@ -115,12 +116,12 @@ Access dynamic graphs for raw stats such as win percentage, field goal percentag
 **Current Injury Table:**
 
 Stay informed about the current injury status of NBA teams. The injury table provides real-time information on player injuries, helping users understand the potential impact on team performance.
+![injury_report](https://github.com/nogibjj/BallersDash/assets/141798228/c59a77d3-c4c5-4086-8e11-b1f5eb50d755)
 
 ### Logging:
 In this project, we implemented logging to capture various events and activities. The log entries are timestamped and categorized by severity levels, including DEBUG, INFO, WARNING, ERROR, and CRITICAL. The log begins with a DEBUG message at 2023-12-10 14:42:01,325, followed by INFO, WARNING, ERROR, and CRITICAL messages. Subsequently, there is an INFO message indicating that logging is working. The logging then captures details about the processing of different NBA teams, such as ATL, BOS, CLE, NOP, CHI, DAL, DEN, GSW, HOU, LAC, LAL, MIA, MIL, MIN, BKN, NYK, ORL, IND, PHI, PHX, POR, SAC, SAS, OKC, TOR, UTA, MEM, WAS, and DET. Each team's processing includes DEBUG messages for starting HTTPS connections and INFO messages for finishing the processing. The log entries provide insights into the flow of the application, HTTP requests to the NBA stats API, and the successful completion of team processing tasks.
 
 <img width="628" alt="logging_screenshot" src="https://github.com/nogibjj/BallersDash/assets/141798228/40fc0092-603a-44da-a59e-4aed950c82a4">
-
 
 ### Data Engineering with Azure
 
