@@ -5,7 +5,7 @@ from bokeh.plotting import figure
 from bokeh.models import ColumnDataSource, HoverTool, CrosshairTool, PanTool
 from bokeh.layouts import column
 from PIL import Image
-from Support.scraper import Scraper
+from scraper import Scraper
 from etl import load_data as load_data_from_db
 from databricks import sql
 
