@@ -5,7 +5,9 @@ from bokeh.plotting import figure
 from bokeh.models import ColumnDataSource, HoverTool, CrosshairTool, PanTool
 from bokeh.layouts import column
 from PIL import Image
-from scraper import Scraper
+from Support.scraper import Scraper
+from etl import load_data as load_data_from_db
+from databricks import sql
 
 
 @st.cache_data
@@ -186,7 +188,7 @@ if __name__ == "__main__":
     bs_scraper = Scraper()
 
     st.set_page_config(layout="wide")
-    st.title("NBA Stats Dashboard")
+    st.title("NBA Stats Dashboard. By: NBA Ballers Team (RR, OA, SS, FJ)")
     col1, col2, col3, col4 = st.columns(4)
 
     with col1:
@@ -200,7 +202,7 @@ if __name__ == "__main__":
     with col2:
         ss = st.date_input("Start Day", date(2023, 10, 1))
     with col3:
-        se = st.date_input("End Day", date(2024, 4, 1))
+        se = st.date_input("End Day", date(2023, 12, 7))
     with col4:
         options = st.multiselect(
             "Game Types", ["Regular Season", "Playoffs"], ["Regular Season", "Playoffs"]
@@ -208,6 +210,17 @@ if __name__ == "__main__":
 
     seaso_n_ = season_year
     season__type_ = options
+
+    # (
+    #     teams__df,
+    #     easter__teams_,
+    #     western__teams_,
+    #     team__log_dict_,
+    #     to_merge__df,
+    #     games,
+    #     basketball_ref_games,
+    #     team_abbreviation,
+    # ) = load_data(seaso_n_, season__type_, today_, ss, se)
 
     (
         teams__df,
@@ -218,11 +231,34 @@ if __name__ == "__main__":
         games,
         basketball_ref_games,
         team_abbreviation,
-    ) = load_data(seaso_n_, season__type_, today_, ss, se)
+    ) = load_data_from_db()
 
     for game in games:
         team__1 = game[0]
         team__2 = game[1]
+
+        # (
+        #     sts,
+        #     vdf,
+        #     vps,
+        #     t1,
+        #     t2,
+        #     t1ps,
+        #     t1p15,
+        #     t1p10,
+        #     t1p5,
+        #     t2ps,
+        #     t2p15,
+        #     t2p10,
+        #     t2p5,
+        # ) = get_stats(
+        #     team__1,
+        #     team__2,
+        #     team__log_dict_,
+        #     to_merge__df,
+        #     basketball_ref_games,
+        #     teams__df,
+        # )
         if st.checkbox(f"{team__1} VS {team__2}"):
             # Define the main tabs
             tabs = [
@@ -450,6 +486,7 @@ if __name__ == "__main__":
                     except ValueError:
                         st.text("Head to Head distribution plots not available.")
 
+            vdf["GAME_DATE"] = pd.to_datetime(vdf["GAME_DATE"], utc=True)
             vdf["GAME_DATE"] = pd.to_datetime(vdf["GAME_DATE"])
             vdf["dt"] = vdf["GAME_DATE"].dt.strftime("%Y-%m-%d %H:%M:%S")
             srcc = vdf
