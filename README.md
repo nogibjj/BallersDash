@@ -99,14 +99,18 @@ By synergizing the capabilities of Apache Spark, Azure Databricks, and a meticul
 **Probability Distribution and CDF Graphs:**
 
 Access Probability Distribution Function (PDF) and Cumulative Distribution Function (CDF) graphs for team vs. team points data. These interactive graphs represent scaled points for the last 5, 10, 15, and all games in the season. Points are scaled to reflect the opposing team's strength, determined by a custom ranking algorithm.
+![PDF_graphs](https://github.com/nogibjj/BallersDash/assets/141798228/0fd8b1c8-86db-4862-a453-b4b82e422648)
 
 **Point Difference Interactive Graph:**
 
 Explore an interactive graph displaying the point difference in head-to-head matchups. This graph offers a dynamic visualization of how the point difference between teams varies across different games.
+![scaled_points](https://github.com/nogibjj/BallersDash/assets/141798228/6e7b4f52-848c-482e-906f-e30b556f70a8)
 
 **Dynamic Raw Stats Graphs:**
 
 Access dynamic graphs for raw stats such as win percentage, field goal percentage, 3-point attempts, defensive rebounds, and more. Users can customize the graphs based on their preferences and input criteria.
+![raw_stats](https://github.com/nogibjj/BallersDash/assets/141798228/da9f865d-b5fe-47d4-a493-ad22980a85bf)
+![raw_stats_head](https://github.com/nogibjj/BallersDash/assets/141798228/77082248-4ed6-4a95-a6e0-1f2051decc9c)
 
 **Current Injury Table:**
 
