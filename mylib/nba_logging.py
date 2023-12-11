@@ -92,9 +92,6 @@ def h_2_h_stats_helper(dat, dict_, team_, id_):
 def h_2_h_helper(
     all_scores_: list, m: float, s_: float, col: str, team_: str, pcdf, id_, p=0
 ):
-def h_2_h_helper(
-    all_scores_: list, m: float, s_: float, col: str, team_: str, pcdf, id_, p=0
-):
     max_pts = m + s_  # mean + stddev
     min_pts = m - s_
     max_pcdf = max(pcdf)
@@ -148,16 +145,10 @@ def h_2_h_helper(
 def h_2h_pdf_plot_helper(
     all_scores_: list, m: float, s_: float, col: str, team_: str, id_: str, p=0
 ) -> figure:
-def h_2h_pdf_plot_helper(
-    all_scores_: list, m: float, s_: float, col: str, team_: str, id_: str, p=0
-) -> figure:
     pdf = [p * 100 for p in norm.pdf(all_scores_, m, s_)]
     return h_2_h_helper(all_scores_, m, s_, col, team_, pdf, id_, p)
 
 
-def h_2h_cdf_plot_helper(
-    all_scores_: list, m: float, s_: float, col: str, team_: str, id_: str, p=0
-) -> figure:
 def h_2h_cdf_plot_helper(
     all_scores_: list, m: float, s_: float, col: str, team_: str, id_: str, p=0
 ) -> figure:
@@ -256,7 +247,6 @@ def raw_plots_helper(t, team_, p, clr, mode=0, src_=None):
 
 # Define a function to apply styles to a DataFrame
 def color_by_score(val):
-    if val == "W":
     if val == "W":
         color = "green"
     else:
@@ -638,7 +628,6 @@ if __name__ == "__main__":
             st.subheader(f"{team__1} VS {team__2}")
             all_scores = list(range(50, 170))
             if main_tab == "Head to Head":
-            if main_tab == "Head to Head":
                 st.text(f"Head to Head")
                 col1, col2 = st.columns(2)
                 logging.info(
@@ -881,7 +870,6 @@ if __name__ == "__main__":
             pp.add_tools(hov_)
 
             if main_tab == "scaled_points_stats":
-            if main_tab == "scaled_points_stats":
                 st.text(f"scaled_points_stats")
                 try:
                     st.dataframe(scaled_points_stats_df)
@@ -955,7 +943,6 @@ if __name__ == "__main__":
                         exc_info=True,
                     )
 
-            if main_tab == "Head to Head":
             if main_tab == "Head to Head":
                 with col2:
                     try:
@@ -1041,7 +1028,6 @@ if __name__ == "__main__":
                         m1, s1, m2, s2, all_scores, team__1, team__2, "Last 5 Games"
                     )
 
-            if main_tab == "score_diff_probability":
             if main_tab == "score_diff_probability":
                 st.text(f"score_diff_probability")
                 col1, col2 = st.columns(2)
