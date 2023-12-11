@@ -127,13 +127,14 @@ In this project, we implemented logging to capture various events and activities
 
 The subsequent deployment on Azure Web App adds another dimension to our architecture. Azure Web App provides a scalable and reliable platform for hosting containerized applications, and by utilizing the Docker image, our microservice seamlessly integrates into this environment. This deployment ensures that our microservice is not only efficiently hosted but also benefits from Azure's robust infrastructure. The use of the Docker image simplifies the deployment process, allowing us to harness the power of Azure Web App for orchestrating a comprehensive and efficient deployment pipeline. This pivotal step offers a public endpoint for our microservice, enhancing accessibility and showcasing the synergies between Docker and Azure Web App in facilitating a seamless integration process.
 
-### Docker Imaging and DockerHub
+### Docker Imaging and [DockerHub](https://hub.docker.com/repository/docker/shawir/nbastats/general)
 
 The utilization of Docker plays a pivotal role in achieving the seamless integration of our microservice with a data pipeline. By encapsulating our microservice and its dependencies into a Docker container, we ensure consistent performance across diverse environments. The choice of Python for development aligns with Docker's flexibility, allowing us to package and distribute our microservice effortlessly. Incorporating logging within the microservice enhances visibility into its performance and aids in troubleshooting.
 
 Furthermore, containerizing our microservice with Docker images adds an additional layer of security and efficiency, stripping away unnecessary components and reducing the attack surface. The inclusion of a Dockerfile in the repository streamlines the containerization process and facilitates version control.
 
 Uploading the Docker image to DockerHub serves as a centralized repository, enhancing collaboration and accessibility for future deployments. This step ensures that the functioning container is readily available, adhering to best practices in container management and versioning.
+![dockerhub_final](https://github.com/nogibjj/BallersDash/assets/141798228/87f449c9-7535-48fb-86a0-19fcffccc13f)
 
 ### GitHub Actions
 
