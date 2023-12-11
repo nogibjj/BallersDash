@@ -1,4 +1,5 @@
 # NBA Statistics Dashboard
+[![CI](https://github.com/nogibjj/BallersDash/actions/workflows/cicd.yml/badge.svg)](https://github.com/nogibjj/BallersDash/actions/workflows/cicd.yml)
 
 ### Team Members: Rakeen Rouf, Osama Ahmed, Faraz Jawed, Simrun Sharma
 
