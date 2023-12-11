@@ -4,8 +4,7 @@
 ### Team Members: Rakeen Rouf, Osama Ahmed, Faraz Jawed, Simrun Sharma
 
 The NBA Statistics Dashboard is an immersive and dynamic analytics tool that empowers users with in-depth insights into NBA teams and players, utilizing head-to-head analytics, raw statistics, dynamic visualizations, and advanced ranking algorithms. Showcasing a user-friendly interface for analyzing gaming trends, making informed decisions for fantasy league gameplay, and enhancing the sports betting experience.
-
-![NBA_FLOWCHART_transparent (1)](https://github.com/nogibjj/BallersDash/assets/141798228/843d3b23-9c23-4fd2-9ac1-6cfe2ce55208)
+![NBA_FLOWCHART_white](https://github.com/nogibjj/BallersDash/assets/141798228/0d6e250c-9c80-4ed6-ab75-fc1b20d87adc)
 
 ### Project Overview
 
@@ -58,7 +57,7 @@ On Basketball Reference, you can find:
    - Access dynamic graphs for raw stats such as win percentage, field goal percentage, 3-point attempts, defensive rebounds, and more. Users can customize the graphs based on their preferences and input criteria.
 
 ### Dashboard Display
-
+![dashboard_display](https://github.com/nogibjj/BallersDash/assets/141798228/7218eea3-0fd0-4939-9d6a-efc9f8d4a394)
 The Streamlit-based NBA Statistics Dashboard provides a sleek and user-friendly interface for exploring intricate NBA statistics. Users can effortlessly select games, specify date ranges, and choose points of interest. Once data is processed, the dynamic dashboard unfolds, featuring head-to-head analytics, raw team statistics, and interactive visualizations. With customizable parameters, including team rankings, injury updates, and dynamic raw stats graphs, the interface ensures an immersive and tailored experience for fantasy league players, sports bettors, and basketball enthusiasts alike.
 
 ### Detailed ETL Pipeline Workflow
@@ -150,6 +149,9 @@ To evaluate the scalability and performance of the NBA Stats web application rig
 
 ### IaC(Infrastruce as Code) and SQL WareHouse(DataBricks)
 Our project meticulously meets the specified requirements for Data Engineering and Infrastructure as Code (IaC), delivering a comprehensive and efficient sports analytics platform. In adherence to Data Engineering principles, we employ Apache Spark, a robust data engineering library, for the transformation phase. This ensures optimal structuring, cleaning, and manipulation of the extracted raw team data, encompassing player statistics, team metrics, and game details. The Azure Databricks SQL Warehouse serves as our scalable and performant database solution, forming the backbone for structured tables and seamless querying. Our ETL pipeline, orchestrated by a Python logic script, operates daily at 6 AM, automating the data flow to guarantee up-to-date analytics. Furthermore, our project excels in IaC by utilizing Azure Databricks for infrastructure setup and management. This integration provides a scalable, cloud-based environment for our ETL processes, aligning with the principles of Infrastructure as Code. The cohesive synergy of Spark, Azure Databricks, and IaC ensures a reliable, efficient, and up-to-date foundation for sports analytics, empowering users with valuable insights for informed decision-making.
+
+
+In our project, Infrastructure as Code (IaC) is employed using Terraform with Azure to automate and standardize deployment and environment configurations. This approach ensures consistent infrastructure provisioning, minimizing manual errors and enhancing reproducibility across different environments. By leveraging Terraform's capabilities, the team can efficiently manage Azure resources, facilitating scalability and maintaining an agile development workflow.
 
 ### Run this App on Your Own!
 
