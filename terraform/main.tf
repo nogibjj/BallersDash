@@ -100,7 +100,7 @@ resource "azurerm_app_service" "webapp" {
 
   site_config {
     always_on        = true
-    linux_fx_version = "DOCKER|shawir/nbastats:final"
+    linux_fx_version = "DOCKER|shawir/nbadash:final"
   }
 
   app_settings = {
