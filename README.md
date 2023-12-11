@@ -14,6 +14,7 @@ The NBA Statistics Dashboard is an innovative and user-focused project that harn
 Explore a live demonstration of the NBA Statistics Dashboard! Watch the video to see the innovative features, interactive visualizations, and functionalities that empower NBA enthusiasts, fantasy league participants, and sports fanatics. From head-to-head analytics to real-time injury updates, this dashboard redefines the landscape of NBA statistics.
 
 [![NBA Statistics Dashboard Demo](https://img.youtube.com/vi/vyATMDZy50Y/0.jpg)](https://youtu.be/vyATMDZy50Y)
+
 [🎥 **Watch the Demo**](https://youtu.be/vyATMDZy50Y)
 
 ### Data Source: [Basketball References]
