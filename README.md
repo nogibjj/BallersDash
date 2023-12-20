@@ -106,20 +106,25 @@ By synergizing the capabilities of Apache Spark, Azure Databricks, and a meticul
 Access Probability Distribution Function (PDF) and Cumulative Distribution Function (CDF) graphs for team vs. team points data. These interactive graphs represent scaled points for the last 5, 10, 15, and all games in the season. Points are scaled to reflect the opposing team's strength, determined by a custom ranking algorithm.
 
 PDF GRAPHS:
-![PDF_graphs](https://github.com/nogibjj/BallersDash/assets/141798228/69751389-68ce-4334-a847-ad7142bcbe3a)
+
+![pdf](https://github.com/nogibjj/BallersDash/assets/36940292/bdc3f5e7-f7d4-40a9-bc9d-cf730c88dcc0)
 
 CDF GRAPHS:
-![cdf_graphs](https://github.com/nogibjj/BallersDash/assets/141798228/61fd2773-ea24-4edd-a118-70fb3a9210ce)
+
+![CDF](https://github.com/nogibjj/BallersDash/assets/36940292/eed857f6-5bb9-469a-a22b-78e161f54a23)
 
 **Point Difference Interactive Graph and Point Difference Probabilites Graph:**
 
 The Point Difference Probabilities graph anticipates future NBA game outcomes by providing a forecast based on cumulative distribution functions (CDF) for points scored by teams. On the other hand, the Point Difference Interactive Graph offers insights into historical trends, considering the point difference across the last 5, 10, and full season games. While the former is geared towards predictive analytics, the latter serves as a retrospective tool, capturing the dynamics of teams in recent matchups and the overall season.
-![scaled_points](https://github.com/nogibjj/BallersDash/assets/141798228/6e7b4f52-848c-482e-906f-e30b556f70a8)
+
+![scaled_stats](https://github.com/nogibjj/BallersDash/assets/36940292/a911421c-16ce-4273-b218-0de44bed26af)
 
 **Dynamic Raw Stats Graphs:**
 
 Access dynamic graphs for raw stats such as win percentage, field goal percentage, 3-point attempts, defensive rebounds, and more. Users can customize the graphs based on their preferences and input criteria.
-![raw_stats](https://github.com/nogibjj/BallersDash/assets/141798228/da9f865d-b5fe-47d4-a493-ad22980a85bf)
+
+![raw_stats_dynamic](https://github.com/nogibjj/BallersDash/assets/36940292/abea8a29-244d-4706-9bab-89099cc10d09)
+
 ![raw_stats_head](https://github.com/nogibjj/BallersDash/assets/141798228/77082248-4ed6-4a95-a6e0-1f2051decc9c)
 
 **Current Injury Table:**
