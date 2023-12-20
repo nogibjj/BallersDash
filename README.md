@@ -113,17 +113,24 @@ CDF GRAPHS:
 
 ![CDF](https://github.com/nogibjj/BallersDash/assets/36940292/eed857f6-5bb9-469a-a22b-78e161f54a23)
 
-**Point Difference Interactive Graph and Point Difference Probabilites Graph:**
+**Point Difference Probabilites Table and Point Difference Interactive Graph:**
 
-The Point Difference Probabilities graph anticipates future NBA game outcomes by providing a forecast based on cumulative distribution functions (CDF) for points scored by teams. On the other hand, the Point Difference Interactive Graph offers insights into historical trends, considering the point difference across the last 5, 10, and full season games. While the former is geared towards predictive analytics, the latter serves as a retrospective tool, capturing the dynamics of teams in recent matchups and the overall season.
+The Point Difference Probabilities table anticipates future NBA game outcomes by providing a forecast based on cumulative distribution functions (CDF) for points scored by teams. On the other hand, the Point Difference Interactive Graph offers insights into historical trends, considering the point difference across the last 5, 10, and full season games. While the former is geared towards predictive analytics, the latter serves as a retrospective tool, capturing the dynamics of teams in recent matchups and the overall season.
+
+![image](https://github.com/nogibjj/BallersDash/assets/36940292/543b38b2-eb84-4211-b991-aed205215ceb)
 
 ![scaled_stats](https://github.com/nogibjj/BallersDash/assets/36940292/a911421c-16ce-4273-b218-0de44bed26af)
+
 
 **Dynamic Raw Stats Graphs:**
 
 Access dynamic graphs for raw stats such as win percentage, field goal percentage, 3-point attempts, defensive rebounds, and more. Users can customize the graphs based on their preferences and input criteria.
 
 ![raw_stats_dynamic](https://github.com/nogibjj/BallersDash/assets/36940292/abea8a29-244d-4706-9bab-89099cc10d09)
+
+**Raw Stats Table:**
+
+Access raw stats in table form.
 
 ![raw_stats_head](https://github.com/nogibjj/BallersDash/assets/141798228/77082248-4ed6-4a95-a6e0-1f2051decc9c)
 
